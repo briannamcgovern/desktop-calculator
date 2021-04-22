@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <title>My Calculator</title>
+    <script src="script.js"></script>
+</head>
+<body style="background: white;">
+    <div class="container">
+        <div class="display">   
+            <p id="output">0</p>
+        </div>
+        <div class="first-row"> 
+            <button id="r1-1" onclick="forClear()">C</button>
+            <button id="r1-2" onclick="percent()">%</button>
+            <button id="r1-3" onclick="forDisplay('/')">/</button>
+        </div>
+        <div class="second-row"> 
+            <button id="r2-1" onclick="forDisplay('1')">1</button>
+            <button id="r2-2" onclick="forDisplay('2')">2</button>
+            <button id="r2-3" onclick="forDisplay('3')">3</button>
+            <button id="r2-4" onclick="forDisplay('*')">x</button>
+            <button id="r2-5" onclick="forDisplay('(')">(</button>
+        </div>
+        <div class="third-row"> 
+            <button id="r3-1" onclick="forDisplay('4')">4</button>
+            <button id="r3-2" onclick="forDisplay('5')">5</button>
+            <button id="r3-3" onclick="forDisplay('6')">6</button>
+            <button id="r3-4" onclick="forDisplay('-')">-</button>
+            <button id="r3-5" onclick="forDisplay(')')">)</button>
+        </div>
+        <div class="fourth-row"> 
+            <button id="r4-1" onclick="forDisplay('7')">7</button>
+            <button id="r4-2" onclick="forDisplay('8')">8</button>
+            <button id="r4-3" onclick="forDisplay('9')">9</button>
+            <button id="r4-4" onclick="forDisplay('+')">+</button>
+            <button id="r2-6" onclick="forDisplay('**')">^</button>
+        </div>
+        <div class="fifth-row"> 
+            <button id="r5-1" onclick="forDisplay(0)">0</button>
+            <button id="r5-2">.</button>
+            <button id="r5-3" onclick="solve()">=</button>
+        </div>
+     </div>
+     <div class = "history">
+        <p id="equation"></p>
+     </div>
+</body>
+</html>
+
+<!-- https://medium.com/swlh/make-your-own-calculator-in-html-css-javascript-1319dd93a742 -->
+
+<!-- EASTER EGG: You can make an advanced version of this calculator project, 
+which even saves the history of user’s calculations.  -->
+
+<script>
+    document.addEventListener("keyup", function(event) {
+        switch (event.key) {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9': {   
+                forDisplay(event.key);
+                break;
+            }
+            case '+':
+            case '-':
+            case '*':
+            case '/':  
+            case '(':
+            case ')':
+            case '%': {
+                forDisplay(event.key);
+                break;
+            }
+            case 'Enter':
+            case '=': {
+                solve();
+                break;
+            }
+            case '^': {
+                forDisplay('**');
+                break;
+            }
+            case 'Backspace': {
+                forClear();
+                break;
+            }
+            case 'Shift':
+            default:
+                return;
+        }
+    });
+</script>
+
+
+
